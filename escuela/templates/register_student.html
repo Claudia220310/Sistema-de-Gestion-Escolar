@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Alumno</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Institución Educativa Carlos Galán</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student' %}">Alumnos Registrados</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <h2 class="my-4">Registrar Alumno</h2>
+        <form method="POST" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_nombre">Nombre</label>
+                <input type="text" class="form-control" id="id_nombre" name="nombre" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa el nombre.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_apellido">Apellido</label>
+                <input type="text" class="form-control" id="id_apellido" name="apellido" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa el apellido.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_edad">Edad</label>
+                <input type="number" class="form-control" id="id_edad" name="edad" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa la edad.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_no_documento">No. Documento</label>
+                <input type="text" class="form-control" id="id_no_documento" name="no_documento" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa el número de documento.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_grado">Grado</label>
+                <input type="text" class="form-control" id="id_grado" name="grado" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa el grado.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_genero">Género</label>
+                <select class="form-control" id="id_genero" name="genero" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="F">Femenino</option>
+                    <option value="M">Masculino</option>
+                    <option value="N">No aplica</option>
+                </select>
+                <div class="invalid-feedback">
+                    Por favor, selecciona el género.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_direccion">Dirección</label>
+                <input type="text" class="form-control" id="id_direccion" name="direccion" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa la dirección.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_padre_familia">Padre de Familia</label>
+                <input type="text" class="form-control" id="id_padre_familia" name="padre_familia" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa el nombre del padre de familia.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_numero_padre">Número de Teléfono del Padre</label>
+                <input type="text" class="form-control" id="id_numero_padre" name="numero_padre" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa el número de teléfono del padre.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3 bg-dark text-white">
+            © 2024 Institución Educativa Carlos Galán. Todos los derechos reservados.
+        </div>
+    </footer>
+    <script>
+        
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</html>

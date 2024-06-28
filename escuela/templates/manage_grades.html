@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestionar Notas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Gestionar Notas para {{ student.nombre }} {{ student.apellido }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Asignatura</th>
+                        <th scope="col">Calificación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Español</td>
+                        <td>{{ form.espanol }}</td>
+                    </tr>
+                    <tr>
+                        <td>Matemáticas</td>
+                        <td>{{ form.matematicas }}</td>
+                    </tr>
+                    <tr>
+                        <td>Inglés</td>
+                        <td>{{ form.ingles }}</td>
+                    </tr>
+                    <tr>
+                        <td>Religión</td>
+                        <td>{{ form.religion }}</td>
+                    </tr>
+                    <tr>
+                        <td>Sociales</td>
+                        <td>{{ form.sociales }}</td>
+                    </tr>
+                    <tr>
+                        <td>Ética</td>
+                        <td>{{ form.etica }}</td>
+                    </tr>
+                    <tr>
+                        <td>Educación Física</td>
+                        <td>{{ form.edu_fisica }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

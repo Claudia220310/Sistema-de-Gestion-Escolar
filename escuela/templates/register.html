@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Docente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Institución Educativa Carlos Galán</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'teacher' %}">Docentes Registrados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'teacher' %}">Alumnos Registrados</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <h2 class="my-4">Registrar Docente</h2>
+        <form method="POST" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">Nombre de Usuario</label>
+                <input type="text" class="form-control" id="id_username" name="username" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa el nombre de usuario.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_cc">Cédula</label>
+                <input type="text" class="form-control" id="id_cc" name="cc" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa la cédula.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_telefono">Teléfono</label>
+                <input type="text" class="form-control" id="id_telefono" name="telefono" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa el teléfono.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_grado">Grado</label>
+                <input type="text" class="form-control" id="id_grado" name="grado" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa el grado.
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="id_direccion">Dirección</label>
+                <input type="text" class="form-control" id="id_direccion" name="direccion" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa la dirección.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_email">Email</label>
+                <input type="email" class="form-control" id="id_email" name="email" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa un email válido.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_password">Contraseña</label>
+                <input type="password" class="form-control" id="id_password" name="password" required>
+                <div class="invalid-feedback">
+                    Por favor, ingresa la contraseña.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3 bg-dark text-white">
+            © 2024 Institución Educativa Carlos Galán. Todos los derechos reservados.
+        </div>
+    </footer>
+    <script>
+        
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</html>

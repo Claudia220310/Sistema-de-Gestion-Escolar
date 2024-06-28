@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Institución Educativa Carlos Galán - Tomar Asistencia</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .card {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+        .card img {
+            width: 100%; 
+            height: 200px; 
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .card img:hover {
+            transform: scale(1.1);
+        }
+        .card-title {
+            margin-top: 10px;
+        }
+        footer {
+            margin-top: auto;
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Institución Educativa Carlos Galán</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'view_attendance' %}">Lista de asistencia</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Tomar Asistencia - {{ today }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Asistencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ student.nombre }} {{ student.apellido }}</td>
+                        <td><input type="date" name="date_{{ student.id }}" class="form-control" value="{{ today }}"></td>
+                        <td>
+                            <select name="asistencia_{{ student.id }}" class="form-control">
+                                <option value="Presente">Presente</option>
+                                <option value="Ausente">Ausente</option>
+                                <option value="Tardanza">Tardanza</option>
+                            </select>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Guardar Asistencia</button>
+        </form>
+    </div>
+
+    
+    <footer class="bg-dark text-center">
+        <div class="text-white py-3">
+            © 2024 Institución Educativa Carlos Galán. Todos los derechos reservados.
+        </div>
+    </footer>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
